@@ -1,0 +1,33 @@
+Authentication is needed if content should be protected
+
+Adding Authentication to react Apps 
+
+how Authentication works in react Apps
+
+implementing user AuthenticationAdding Auth persistence And Auto-Logout
+
+Authentication is needed if content should be protected 
+
+Authentication is two step process
+    `get access/permission
+    `send request to protected resource
+
+getting permissions
+from client(Browser)
+server
+response
+
+how it work 
+we could send a yes or No to the server to request protected data 
+
+server side sessions Authentication Tokens
+    `store unique identifier on server, send same to client
+    `client send identification along with request to protected resources
+
+Authentication Tokens
+    `store unique identifier on server in the from of Tokens
+    `create (but not store) permission token on server send token to client
+    `client sends token along with requests to protected resources
+
+this the process of decuplink frontend to backend process
+
