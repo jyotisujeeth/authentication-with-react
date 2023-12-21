@@ -29,5 +29,5 @@ Authentication Tokens
     `create (but not store) permission token on server send token to client
     `client sends token along with requests to protected resources
 
-this the process of decuplink frontend to backend process
+this the process of decouplink frontend to backend process
 
