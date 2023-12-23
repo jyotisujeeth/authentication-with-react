@@ -26,15 +26,39 @@ const AuthForm = () => {
   }else {
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyCYklRhUwiUyBOu5-AaUW0otHqOiaLYDBE]"
-    );
+    {
+      method: "POST",
+      body: JSON.stringify({
+        email:	enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true	
+      }),
+      headers:{
+        'Context-type': 'application/JSON'
+      },
+    ).then(res => {
+      if(res.ok) {
+        //.....
+      }else {
+        return res.json().then(data => {
+          console.log(data);
+        });
+      }
+    
+    });
+  
+  
+  }
+
+      
   };
   
-  };
 
   return (
     <section className={classes.auth}>
+
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
           <input type="email" id="email" required ref={emailInputRef} />
