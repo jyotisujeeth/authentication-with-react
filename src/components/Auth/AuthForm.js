@@ -20,13 +20,14 @@ const AuthForm = () => {
   const enteredPassword = passwordInputRef.current.value;
 
   // optinal : Add validation 
+  setIsLoading(true);
 
   if(isLogin) {
 
   }else {
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyCYklRhUwiUyBOu5-AaUW0otHqOiaLYDBE]"
-    {
+    {(
       method: "POST",
       body: JSON.stringify({
         email:	enteredEmail,
@@ -37,11 +38,18 @@ const AuthForm = () => {
         'Context-type': 'application/JSON'
       },
     ).then(res => {
+      setIsLoading(false);
       if(res.ok) {
         //.....
       }else {
         return res.json().then(data => {
-          console.log(data);
+          let errorMessage = "Authentication failed";
+          if(data && data.error && data.error.message){
+         errorMessage = data.errorMessage;
+          
+          // console.log(data);
+          }
+          alert(errorMessage);
         });
       }
     
@@ -70,6 +78,8 @@ const AuthForm = () => {
           <input type="password" id="password" required />
         </div>
         <div className={classes.actions}>
+          {!setIsLoading && <button>{isLogin ? 'Login':'create Account'}</button>}
+          {setIsLoading && <p>Sending request...</p>}
           <button
             type="button"
             className={classes.toggle}
@@ -78,7 +88,7 @@ const AuthForm = () => {
             { isLogin ? "Create new account" : "Login with existing account"}
           </button>
         </div>
-      </form>
+      </form>u
     </section>
   );
 };
