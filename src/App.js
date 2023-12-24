@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout';
 import UserProfile from './components/Profile/UserProfile';
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
-
+import { AuthContext} from
 function App() {
   return (
     <Layout>
