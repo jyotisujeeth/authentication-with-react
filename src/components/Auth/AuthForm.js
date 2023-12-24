@@ -54,6 +54,7 @@ const AuthForm = () => {
         alert("Invalid-Credentials");
       }
     } catch (error) {
+      alert("Error: " + error);
       console.log(error);
     }
   };
