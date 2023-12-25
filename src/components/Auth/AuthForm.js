@@ -1,4 +1,5 @@
 import { useState, useRef, useContext } from "react";
+
 import CreateAuth from "../../Store/Create-Auth";
 import classes from "./AuthForm.module.css";
 import { useHistory } from "react-router-dom";
@@ -48,7 +49,7 @@ const AuthForm = () => {
       if (response.ok) {
         const data = await response.json();
         authCtx.addTokens(data.idToken);
-        history.replace("/");
+        history.replace("/");// for redirecting the user back to the
         // console.log(data);
       } else {
         alert("Invalid-Credentials");

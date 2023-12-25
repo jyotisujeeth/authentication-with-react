@@ -1,16 +1,18 @@
 import { useRef, useContext } from 'react';
 import AuthContextProvider from './Store/Auth-context';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
+
+  const history = useHistory();
 const newPasswordInputRef = useRef();
 const authCtx =useContext(AuthContext);
 
 const SubmitHandler =(event) => {
   event.preventDefault();
 //validation 
-
+history.replace('/');
 fetch(
   
   "https://identitytoolkit.googleapis.com/v1/accounts:update?key=[API_KEY] ");
@@ -21,10 +23,10 @@ fetch(
     returnSecureToken
   }),
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    // 'Authorization': 'Bearer ' + authCtx.token
   }
-}).
-Then(ref => {
+}).then(ref => {
   // assumation : successs 
 })
 };
