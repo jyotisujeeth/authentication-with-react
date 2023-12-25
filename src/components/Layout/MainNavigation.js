@@ -5,7 +5,15 @@ import AuthContext from '../../Store/Auth-context';
 import classes from './MainNavigation.module.css';
 
 const MainNavigation = () => {
-  const authContext = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIN;
+
+  const LogoutHandler = () => {
+      authCtx.logout();
+      //optinal: redirect 
+
+  };
   return (
     <header className={classes.header}>
       <Link to="/">
@@ -25,7 +33,7 @@ const MainNavigation = () => {
           )}
           {isLoggedIn && (
             <li>
-              <button>Logout</button>
+              <button onClick={LogoutHandler}>Logout</button>
             </li>
           )};
         </ul>
